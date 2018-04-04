@@ -11,13 +11,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.google.android.gms.analytics.GoogleAnalytics;
-import com.google.android.gms.analytics.Tracker;
-
 public class MainActivity extends Activity {
 
-    public static GoogleAnalytics analytics;
-    public static Tracker tracker;
     public Context mContext;
 
     @Override
@@ -26,14 +21,6 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         mContext = this;
-
-        analytics = GoogleAnalytics.getInstance(this);
-        analytics.setLocalDispatchPeriod(1800);
-
-        tracker = analytics.newTracker("UA-52564878-2");
-        tracker.enableExceptionReporting(true);
-        tracker.enableAdvertisingIdCollection(true);
-        tracker.enableAutoActivityTracking(true);
 
         if(!isWearAppInstalled()){
             (findViewById(R.id.hide)).setClickable(false);
