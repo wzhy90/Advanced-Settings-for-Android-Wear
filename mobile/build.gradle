@@ -2,34 +2,30 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
-
     lintOptions {
         abortOnError false
         disable 'MissingTranslation'
     }
-
     defaultConfig {
         applicationId "com.sssemil.advancedsettings"
-        minSdkVersion 10
+        minSdkVersion 21
         targetSdkVersion 25
         versionCode 54
         versionName "1.7.6.1"
         // Enabling multidex support.
         multiDexEnabled true
     }
-
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+    }
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     wearApp project(':wear')
-    compile 'com.android.support:appcompat-v7:25.1.0'
-    compile 'com.google.android.gms:play-services:10.0.1'
 }
