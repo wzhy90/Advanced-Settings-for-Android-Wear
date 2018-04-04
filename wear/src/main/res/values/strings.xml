@@ -17,7 +17,7 @@
      MA  02110-1301, USA.
 -->
 <resources>
-    <string name="app_name" translatable="false">Advanced Settings</string>
+    <string name="app_name">Advanced Settings</string>
 
     <string name="default_summary_on">On</string>
     <string name="default_summary_off">Off</string>
@@ -25,13 +25,13 @@
     <string name="force_stop">Force stop</string>
     <string name="uninstallU">Uninstall</string>
     <string name="permissions">Permissions</string>
-    <string name="language_input_settings">Language&amp;Input</string>
+    <string name="language_input_settings">Language &amp; Input</string>
     <string name="finish">Finish</string>
     <string name="open">Open</string>
     <string name="failed">FAILED!</string>
     <string name="done">DONE!</string>
     <string name="no_perm">No permissions.</string>
-    <string name="working">Working…\n</string>
+    <string name="working">Working…</string>
 
     <string name="license">License</string>
 

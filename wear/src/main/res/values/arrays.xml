@@ -3,6 +3,9 @@
     <string-array name="entries_screen_timeout">
         <item>5 seconds</item>
         <item>10 seconds</item>
+        <item>15 seconds</item>
+        <item>20 seconds</item>
+        <item>25 seconds</item>
         <item>30 seconds</item>
         <item>1 minute</item>
         <item>2 minutes</item>
@@ -13,6 +16,9 @@
     <string-array name="values_screen_timeout" translatable="false">
         <item>5000</item>
         <item>10000</item>
+        <item>15000</item>
+        <item>20000</item>
+        <item>25000</item>
         <item>30000</item>
         <item>60000</item>
         <item>120000</item>

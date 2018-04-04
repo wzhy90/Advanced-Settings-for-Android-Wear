@@ -71,4 +71,12 @@ https://github.com/sssemil/wear_AdvancedSettings</string>
   <string name="dis_apps">停用</string>
   <string name="noapps">這裡沒有應用程式</string>
   <string name="manage_screen_saver_br">管理螢幕保護時亮度</string>
+  <string name="change_dpi">LCD 密度</string>
+  <string name="tasks">任務</string>
+  <string name="on_theatre_mode_launch_app">劇場模式時運行應用</string>
+  <string name="governor">調度器</string>
+  <string name="min_freq">最小頻率</string>
+  <string name="max_freq">最大頻率</string>
+  <string name="performance_settings">性能</string>
+  <string name="app_name">進階設定</string>
 </resources>

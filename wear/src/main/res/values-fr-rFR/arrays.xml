@@ -3,6 +3,9 @@
   <string-array name="entries_screen_timeout">
     <item>5 secondes</item>
     <item>10 secondes</item>
+    <item>15 secondes</item>
+    <item>20 secondes</item>
+    <item>25 secondes</item>
     <item>30 secondes</item>
     <item>1 minute</item>
     <item>2 minutes</item>
