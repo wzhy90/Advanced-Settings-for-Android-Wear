@@ -15,6 +15,7 @@
         <item>Deutsch, Liechtenstein</item>
         <item>Deutsch, Schweiz</item>
         <item>中国，中国</item>
+        <item>中國，香港</item>
         <item>中國，台灣</item>
         <item>Český, Česká republika</item>
         <item>Nederlands, België</item>
@@ -73,6 +74,7 @@
         <item>de-LI</item>
         <item>de-CH</item>
         <item>zh-CN</item>
+        <item>zh-HK</item>
         <item>zh-TW</item>
         <item>cs-CZ</item>
         <item>nl-BE</item>
