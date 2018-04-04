@@ -25,6 +25,16 @@
         android:layout_alignParentStart="true"
         android:padding="5dp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/wear2"
+        android:id="@+id/wear2"
+        android:layout_below="@+id/small_info"
+        android:layout_alignParentStart="true"
+        android:padding="5dp" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,8 +42,8 @@
         android:id="@+id/donate"
         android:layout_gravity="center_horizontal|top"
         android:onClick="onDonateClick"
-        android:layout_alignEnd="@+id/small_info"
-        android:layout_alignStart="@+id/small_info"
+        android:layout_alignEnd="@+id/wear2"
+        android:layout_alignStart="@+id/wear2"
         android:layout_below="@+id/rate" />
 
     <Button
@@ -43,7 +53,7 @@
         android:id="@+id/rate"
         android:layout_gravity="right|top"
         android:onClick="onRateItClick"
-        android:layout_below="@+id/small_info"
+        android:layout_below="@+id/wear2"
         android:layout_alignParentStart="true"
         android:layout_alignEnd="@+id/donate" />
 

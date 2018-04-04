@@ -10,4 +10,6 @@
   <string name="usd_donation32">捐贈32美元</string>
   <string name="btc_donation">捐贈比特幣</string>
   <string name="hide">隱藏手機端圖示</string>
+  <string name="no_app">你似乎沒有安裝 Android Wear 應用程式！除非你安裝 Android Wear應用程式並與手表進行配對，否則此應用程式不會安裝到 Android Wear 手表上！請注意此應用程式不適用於手機或者平板電腦，只適用於手表！</string>
+  <string name="wear2">如果你在使用 Wear OS 2.0，請在手表上打開 Play 商店並向下滾動，在底部尋找並安裝此應用。</string>
 </resources>
