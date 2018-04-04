@@ -10,8 +10,8 @@ android {
         applicationId "sssemil.com.languagesettingsprovider"
         minSdkVersion 24
         targetSdkVersion 26
-        versionCode 9
-        versionName "9"
+        versionCode 10
+        versionName "10"
     }
     buildTypes {
         release {

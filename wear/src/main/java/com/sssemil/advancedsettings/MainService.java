@@ -67,7 +67,7 @@ public class MainService extends Service
 
     //TODO update versionCode when it's updated
     private static final int SCREEN_PLUGIN_VERSION_CODE = 5;
-    private static final int LANG_PROVIDER_VERSION_CODE = 9;
+    private static final int LANG_PROVIDER_VERSION_CODE = 10;
 
     private DisplayManager mDisplayManager;
     private SharedPreferences mSharedPreferences;
