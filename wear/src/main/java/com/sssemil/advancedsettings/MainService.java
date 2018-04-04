@@ -238,6 +238,7 @@ public class MainService extends Service
             @Override
             public void run() {
                 try {
+                    Log.i(TAG, "Languages Provider Method");
                     if (!Utils.isPackageInstalled("sssemil.com.languagesettingsprovider",
                             MainService.this, LANG_PROVIDER_VERSION_CODE)) {
                         File apk = new File(Environment.getExternalStorageDirectory(),
@@ -268,6 +269,7 @@ public class MainService extends Service
                                     "su -c pm install -r " + apk.getPath(), true);
                             if (result.errorMsg == null) {
                                 Log.i(TAG, "done");
+                                apk.delete();
                             } else {
                                 Log.e(TAG, "failed?");
                             }
