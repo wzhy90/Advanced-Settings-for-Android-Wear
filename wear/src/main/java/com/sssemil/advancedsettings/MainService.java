@@ -30,6 +30,7 @@ import android.content.SharedPreferences;
 import android.database.ContentObserver;
 import android.graphics.BitmapFactory;
 import android.hardware.display.DisplayManager;
+import android.net.Uri;
 import android.os.BatteryManager;
 import android.os.Build;
 import android.os.Environment;
@@ -216,10 +217,10 @@ public class MainService extends Service
                     e.printStackTrace();
                 }
                 try {
-                    ShellUtils.CommandResult result = ShellUtils.execCommand(
-                            "su adb -c pm grant " + getPackageName() + " android.permission.WRITE_SETTINGS", true);
-                    Log.i("GRANT", result.successMsg);
-                    Log.i("GRANT", result.errorMsg);
+                    if (!Settings.System.canWrite(MainService.this)) {
+                        startActivity(new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS,
+                                Uri.parse("package:" + getPackageName())));
+                    }
                     Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_OFF_TIMEOUT,
                             Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(MainService.this)
                                     .getString("screen_timeout_settings",
