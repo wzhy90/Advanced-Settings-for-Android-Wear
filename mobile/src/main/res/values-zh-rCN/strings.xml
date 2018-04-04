@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome">欢迎</string>
+    <string name="text">检查你的手表APP。如果还未安装，请稍等一下直到同步完成。谢谢 :)</string>
+    <string name="rate">评分</string>
+    <string name="hide">隐藏手机端图标</string>
+    <string name="no_app">你似乎没有安装 Android Wear 应用！除非你安装 Android  Wear 应用并与手表进行配对，否则此应用不会安装到 Android Wear 手表上！请注意此应用不适用于手机或平板，只适用于手表！</string>
+</resources>
