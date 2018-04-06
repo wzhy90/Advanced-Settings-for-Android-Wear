@@ -84,7 +84,7 @@ public class MainActivity extends WearPreferenceActivity
                             e.printStackTrace();
                         }
                     }
-
+/*
                     while (ContextCompat.checkSelfPermission(MainActivity.this,
                             Manifest.permission.WRITE_SETTINGS)
                             != PackageManager.PERMISSION_GRANTED) {
@@ -112,7 +112,7 @@ public class MainActivity extends WearPreferenceActivity
                             e.printStackTrace();
                         }
                     }
-
+*/
                     /*if (!android.provider.Settings.System.canWrite(MainActivity.this)) {
                         mContinue = false;
                         runOnUiThread(new Runnable() {
