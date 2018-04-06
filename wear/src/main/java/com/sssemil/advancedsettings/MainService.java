@@ -66,7 +66,6 @@ public class MainService extends Service
     private static final String TAG = "MainService";
 
     //TODO update versionCode when it's updated
-    private static final int SCREEN_PLUGIN_VERSION_CODE = 5;
     private static final int LANG_PROVIDER_VERSION_CODE = 10;
 
     private DisplayManager mDisplayManager;
@@ -229,58 +228,6 @@ public class MainService extends Service
                                                     Settings.System.SCREEN_OFF_TIMEOUT, 0)))));
 
                 } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
-
-        //screen saver timeout plugin installer
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Log.i(TAG, "Screen Plugin Method");
-                    if (!Utils.isPackageInstalled("sssemil.com.screensavertimeoutplugin",
-                            MainService.this, SCREEN_PLUGIN_VERSION_CODE)) {
-                        File apk = new File(Environment.getExternalStorageDirectory(),
-                                "wear_screensavertimeoutplugin-release.apk");
-
-                        String [] name = getAssets().list("");
-                        for (int i = 0; i < name.length; i++) {
-                            if (name[i].equals("wear_screensavertimeoutplugin-release.apk")) {
-                                Log.i(TAG, "Assets has apk");
-                                if (apk.exists()) {
-                                    Log.i(TAG, "apk exists");
-                                    apk.delete();
-                                }
-
-                                InputStream inputStream = getAssets().open(
-                                        "wear_screensavertimeoutplugin-release.apk");
-
-                                FileOutputStream file = new FileOutputStream(apk);
-                                byte buf[] = new byte[4096];
-
-                                int len = inputStream.read(buf);
-                                while (len > 0) {
-                                    file.write(buf, 0, len);
-                                    len = inputStream.read(buf);
-                                }
-                                file.close();
-                            }
-                        }
-
-                        if (apk.exists()) {
-                            Log.i(TAG, "installing....");
-                            ShellUtils.CommandResult result = ShellUtils.execCommand(
-                                    "su -c pm install -r " + apk.getPath(), true);
-                            if (result.errorMsg == null) {
-                                Log.i(TAG, "done");
-                            } else {
-                                Log.e(TAG, "failed?");
-                            }
-                        }
-                    }
-                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
