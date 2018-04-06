@@ -314,17 +314,14 @@ public class DisplaySettingsActivity extends WearPreferenceActivity
         } catch (FileNotFoundException localFileNotFoundException) {
             localFileNotFoundException.printStackTrace();
         }
-
         return screenDensity;
     }
 
-    private void setDensity(int dpi) {
+    private void setDensity(int dpi) throws IOException, InterruptedException {
         if (dpi == 0) {
-            ShellUtils.CommandResult result = ShellUtils.execCommand(
-                    "su -c wm density reset", true);
+            new ProcessBuilder(new String[] {"su", "-c", "wm", "density", "reset"}).start().waitFor();
         } else {
-            ShellUtils.CommandResult result = ShellUtils.execCommand(
-                    "su -c wm density " + dpi, true);
+            new ProcessBuilder(new String[] {"su", "-c", "wm", "density", String.valueOf(dpi)}).start().waitFor();
         }
     }
 
@@ -346,7 +343,7 @@ public class DisplaySettingsActivity extends WearPreferenceActivity
             } else if (key.equals("dpi_settings")
                     && (getDensity()
                     != Integer.parseInt(sharedPreferences.getString(key, null)))) {
-                Toast.makeText(this, String.valueOf(Integer.parseInt(sharedPreferences.getString(key, null))), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, String.valueOf(Integer.parseInt(sharedPreferences.getString(key, null))), Toast.LENGTH_SHORT).show();
                 setDensity(Integer.parseInt(sharedPreferences.getString(key, null)));
             } else if (key.equals("touch_to_wake_screen")) {
                 setTouchToWake(sharedPreferences.getBoolean("touch_to_wake_screen", true));
@@ -374,6 +371,10 @@ public class DisplaySettingsActivity extends WearPreferenceActivity
                 addPreferences(loadedPreferences);
             }
         } catch (SecurityException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
