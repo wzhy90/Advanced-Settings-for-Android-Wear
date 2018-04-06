@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="red" type="color">#ffb12500</item>
+    <item name="red" type="color">#ffff0000</item>
+    <item name="orange" type="color">#ffff8c00</item>
+    <item name="green" type="color">#ff7cfc00</item>
 </resources>

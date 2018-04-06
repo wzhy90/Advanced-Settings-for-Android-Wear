@@ -20,14 +20,15 @@ public class SecuritySettingsActivity extends WearPreferenceActivity {
 
         final List<Preference> loadedPreferences = new ArrayList<>();
         for (int i = 0; i < ((PreferenceScreen) prefsRoot).getChildCount(); i++) {
-            if ((parsePreference(((PreferenceScreen) prefsRoot).getChildAt(i)).getKey())
+            loadedPreferences.add(parsePreference(((PreferenceScreen) prefsRoot).getChildAt(i)));
+/*            if ((parsePreference(((PreferenceScreen) prefsRoot).getChildAt(i)).getKey())
                     .equals("unpair_settings")) {
                 if (Utils.isPackageInstalled("sssemil.com.screensavertimeoutplugin", this, 2)) {
                     loadedPreferences.add(parsePreference(((PreferenceScreen) prefsRoot).getChildAt(i)));
                 }
             } else {
                 loadedPreferences.add(parsePreference(((PreferenceScreen) prefsRoot).getChildAt(i)));
-            }
+            }*/
         }
         addPreferences(loadedPreferences);
     }

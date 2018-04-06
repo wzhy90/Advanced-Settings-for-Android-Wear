@@ -78,4 +78,7 @@
     <string name="min_freq">最小頻率</string>
     <string name="max_freq">最大頻率</string>
     <string name="app_name">進階設定</string>
+    <string name="warning">是否清除 Android Wear (Google Play 服務) 的資料並重新啓動？</string>
+    <string name="cancel">取消</string>
+    <string name="system_menu">系統菜單</string>
 </resources>

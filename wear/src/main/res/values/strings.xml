@@ -105,4 +105,7 @@
     <string name="min_freq">Min Frequency</string>
     <string name="max_freq">Max Frequency</string>
     <string name="items_icon">Item\'s icon</string>
+    <string name="warning">Clear Android Wear Client (Google Play Services) app data and reboot?</string>
+    <string name="cancel">Cancel</string>
+    <string name="system_menu">System Menu</string>
 </resources>

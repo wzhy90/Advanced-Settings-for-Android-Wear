@@ -64,6 +64,7 @@
         <activity android:name=".BrightnessActivity" />
         <activity android:name=".ScreenSaverBrightnessActivity" />
         <activity android:name=".TasksActivity" />
+        <activity android:name=".UnpairActivity"/>
         <activity android:name=".util.preference.ListChooserActivity" />
         <activity android:name=".pm.AppsSettingsActivity" />
         <activity android:name=".pm.AllAppsSettingsActivity" />
