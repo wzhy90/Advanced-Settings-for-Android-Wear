@@ -147,6 +147,9 @@ public class DeviceCfg {
                 }
                 ArrayList<String> files = new ArrayList<>();
                 try {
+                    if (files.isEmpty()) {
+                        return "null";
+                    }
                     files = searchFiles(dir, "touch.wake =", files);
                     Log.i("FILES", files.toString());
                     touchIdcPath = "/system/usr/idc/" + files.get(0);
