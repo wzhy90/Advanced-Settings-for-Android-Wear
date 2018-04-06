@@ -25,6 +25,14 @@
     <com.sssemil.advancedsettings.util.preference.Button2Preference
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:pref_activity="system_menu"
+        app:pref_icon="@mipmap/ic_apps"
+        app:pref_key="system_menu"
+        app:pref_title="@string/system_menu" />
+
+    <com.sssemil.advancedsettings.util.preference.Button2Preference
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:pref_activity="su -c reboot -p"
         app:pref_icon="@mipmap/ic_power"
         app:pref_key="power_off"
