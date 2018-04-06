@@ -23,11 +23,13 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.sssemil.advancedsettings.util.DeviceCfg;
+import com.sssemil.advancedsettings.util.ShellUtils;
 import com.sssemil.advancedsettings.util.Utils;
 import com.sssemil.advancedsettings.util.preference.Preference;
 import com.sssemil.advancedsettings.util.preference.PreferenceScreen;
@@ -40,7 +42,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -112,11 +113,11 @@ public class DisplaySettingsActivity extends WearPreferenceActivity
                         loadedPreferences.add(parsePreference(((PreferenceScreen) prefsRoot).getChildAt(i)));
                     }
                     break;
-                case "dpi_settings":
-                    if (Utils.isPackageInstalled("sssemil.com.screensavertimeoutplugin", this, 5)) {
-                        loadedPreferences.add(parsePreference(((PreferenceScreen) prefsRoot).getChildAt(i)));
-                    }
-                    break;
+//                case "dpi_settings":
+//                    if (Utils.isPackageInstalled("sssemil.com.screensavertimeoutplugin", this, 5)) {
+//                        loadedPreferences.add(parsePreference(((PreferenceScreen) prefsRoot).getChildAt(i)));
+//                    }
+//                    break;
                 default:
                     loadedPreferences.add(parsePreference(((PreferenceScreen)
                             prefsRoot).getChildAt(i)));
@@ -152,6 +153,8 @@ public class DisplaySettingsActivity extends WearPreferenceActivity
         mSharedPreferences.edit().putString("screen_timeout_settings",
                 String.valueOf(Settings.System.getInt(getContentResolver(),
                         Settings.System.SCREEN_OFF_TIMEOUT, 0))).apply();
+
+        mSharedPreferences.edit().putString("dpi_settings", String.valueOf(getDensity())).apply();
 
         mSharedPreferences.edit().putString("brightness_settings",
                 String.valueOf(Settings.System.getInt(getContentResolver(),
@@ -289,6 +292,41 @@ public class DisplaySettingsActivity extends WearPreferenceActivity
         }
     }
 
+    public int getDensity() {
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        int screenDensity = metrics.densityDpi;
+
+        try {
+            Object file = new File("/system/build.prop");
+            if ((((File) file).exists()) && (((File) file).canRead())) {
+                file = new Scanner((File) file);
+                while (((Scanner) file).hasNextLine()) {
+                    String str = ((Scanner) file).nextLine();
+                    if (str.contains("ro.sf.lcd_density")) {
+                        int i = Integer.parseInt(str.split("=")[1]);
+                        if (i == screenDensity) {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        } catch (FileNotFoundException localFileNotFoundException) {
+            localFileNotFoundException.printStackTrace();
+        }
+
+        return screenDensity;
+    }
+
+    private void setDensity(int dpi) {
+        if (dpi == 0) {
+            ShellUtils.CommandResult result = ShellUtils.execCommand(
+                    "su -c wm density reset", true);
+        } else {
+            ShellUtils.CommandResult result = ShellUtils.execCommand(
+                    "su -c wm density " + dpi, true);
+        }
+    }
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
@@ -305,6 +343,11 @@ public class DisplaySettingsActivity extends WearPreferenceActivity
                     != Integer.parseInt(sharedPreferences.getString(key, null)))) {
                 Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS,
                         Integer.parseInt(sharedPreferences.getString(key, null)));
+            } else if (key.equals("dpi_settings")
+                    && (getDensity()
+                    != Integer.parseInt(sharedPreferences.getString(key, null)))) {
+                Toast.makeText(this, String.valueOf(Integer.parseInt(sharedPreferences.getString(key, null))), Toast.LENGTH_SHORT).show();
+                setDensity(Integer.parseInt(sharedPreferences.getString(key, null)));
             } else if (key.equals("touch_to_wake_screen")) {
                 setTouchToWake(sharedPreferences.getBoolean("touch_to_wake_screen", true));
             } else if (key.equals("manage_screen_saver_brightness_settings")) {

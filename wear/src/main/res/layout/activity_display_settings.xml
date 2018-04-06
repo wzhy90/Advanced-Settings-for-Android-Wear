@@ -43,13 +43,14 @@
         app:pref_package_name="sssemil.com.screensavertimeoutplugin"
         app:pref_title="@string/screen_saver_timeout" />
 
-    <com.sssemil.advancedsettings.util.preference.ButtonAppPreference
+    <com.sssemil.advancedsettings.util.preference.ListPreference
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:pref_activity="sssemil.com.screensavertimeoutplugin.DPIActivity"
+        app:pref_defaultValue="240"
+        app:pref_entries="@array/entries_dpi"
+        app:pref_entryValues="@array/values_dpi"
         app:pref_icon="@mipmap/ic_dpi"
         app:pref_key="dpi_settings"
-        app:pref_package_name="sssemil.com.screensavertimeoutplugin"
         app:pref_title="@string/change_dpi" />
 
     <com.sssemil.advancedsettings.util.preference.ButtonPreference
