@@ -252,9 +252,9 @@ public abstract class Utils {
     }
 
     public static boolean isDeviceRooted() {
-        return checkRootMethod1() || checkRootMethod2() || checkRootMethod3();
+        return checkRootMethod();
     }
-
+/*
     private static boolean checkRootMethod1() {
         String[] paths = {"/sbin/su", "/system/bin/su", "/system/xbin/su", "/data/local/xbin/su", "/data/local/bin/su", "/system/sd/xbin/su",
                 "/system/bin/failsafe/su", "/data/local/su"};
@@ -267,7 +267,7 @@ public abstract class Utils {
     private static boolean checkRootMethod2() {
         Process process = null;
         try {
-            process = Runtime.getRuntime().exec(new String[]{"/system/xbin/which", "su"});
+            process = Runtime.getRuntime().exec(new String[]{"/system/bin/which", "su"});
             BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
             return in.readLine() != null;
         } catch (Throwable t) {
@@ -276,8 +276,8 @@ public abstract class Utils {
             if (process != null) process.destroy();
         }
     }
-
-    private static boolean checkRootMethod3() {
+*/
+    private static boolean checkRootMethod() {
         Process process = null;
         try {
             process = Runtime.getRuntime().exec(new String[]{"su", "-c", "id", "-u"});
